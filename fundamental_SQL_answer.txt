@@ -74,7 +74,7 @@ CREATE TABLE spacecrafts(
     origin text,
     description text,
     orbiting_body text,
-    is_operating text,
+    is_operating boolean,
     miles_earth float 
   );
 
@@ -100,7 +100,7 @@ CREATE TABLE inbox(
    recipients text,
    body text,
    timestamp timestamp,
-   is_read text,
+   is_read boolean,
    id_email_chain integer
    );
 
