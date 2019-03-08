@@ -1,0 +1,137 @@
+1. Write out a generic SELECT statement.
+    SELECT <column1, column2, ... *>
+    FROM <table1, table2 ...>
+    WHERE <condition>
+
+2. Create a fun way to remember the order of operations in a SELECT statement, such as a mnemonic.
+SELECT      Select
+FROM        Fountain
+WHERE       Water
+GROUP BY    Get by
+HAVING      Having
+ORDER BY    Order
+
+3. Given this dogs table, write queries to select the following pieces of data:
+
+Intake teams typically guess the breed of shelter dogs, so the breed column may have multiple words (for example, "Labrador Collie mix").
+- Display the name, gender, and age of all dogs that are part Labrador.
+
+SELECT name, gender, age
+FROM dogs	
+WHERE breed LIKE “%Labrador%”;
+
+- Display the ids of all dogs that are under 1 year old.
+
+SELECT id
+FROM dogs	
+WHERE age < 1;
+
+- Display the name and age of all dogs that are female and over 35lbs.
+
+SELECT name, age
+FROM dogs	
+WHERE gender = “F”
+AND weight > 35;
+
+- Display all of the information about all dogs that are not Shepherd mixes.
+
+SELECT *
+FROM dogs	
+WHERE breed NOT LIKE “%Shepherd%”;
+
+- Display the id, age, weight, and breed of all dogs that are either over 60lbs or Great Danes.
+
+SELECT id, age, weight, breed
+FROM dogs	
+WHERE breed=“great dane”
+OR weight > 60;
+
+
+4. Given this cats table, what records are returned from these queries?
+	
+- SELECT name, adoption_date FROM cats;
+      | name     | adoption_date   |
+		| -------- | ------------------------ |
+
+		| Mushi    | 2016-03-22T00:00:00.000Z |
+		| Seashell |   null   |
+		| Azul     | 2016-04-17T00:00:00.000Z |
+		| Victoire | 2016-09-01T00:00:00.000Z |
+		| Nala     |    null  |
+
+- SELECT name, age FROM cats;
+      | name     | age |
+		| --------    | --- |
+		| Mushi    | 1   |
+		| Seashell | 7   |
+		| Azul       | 3   |
+		| Victoire | 7   |
+		| Nala       | 1   |
+
+5. From the cats table, write queries to select the following pieces of data.
+- Display all the information about all of the available cats.
+SELECT *
+FROM cats;
+
+- Display the name and sex of all cats who are 7 years old.
+SELECT name, sex
+FROM cats
+WHERE age=7;
+
+- Find all of the names of the cats, so you don’t choose duplicate names for new cats.
+SELECT DISTINCT name
+FROM cats;
+
+6. List each comparison operator and explain when you would use it. Include a real world example for each.
+- If you can’t list these from memory, do these flashcards until you can!
+
+= equal , to compare values  ex. WHERE make = ‘ford’
+
+ > greater than, to compare values ex. WHERE age > 50
+
+<  lower than , to compare values ex. WHERE  number < 50
+
+>= greater or equal than ,  to compare values ex. WHERE  number >= 100
+
+<= lower or equal than , to compare values ex. WHERE shoes <= 20(pairs)
+
+!= not equal to, to compare values ex. WHERE height != 6
+
+<> greater than or lower than ex. WHERE group_age < 40 OR >30
+
+BETWEEN   returns true if the statement is within a range.  ex. WHERE tickets  BETWEEN 20 AND 25
+
+OR  one of the expressions need to be true to be returned. ex. WHERE fav_food = ‘Lasagna’ or fav_drink= ‘sangria’
+
+NOT only returns row if the expression is false. ex. WHERE NOT num >50
+
+AND return row(s) if all the conditions separated by the AND are true. ex. WHERE  age=50 AND city= ‘toronto’
+
+IS NULL checks if cell is null or not.  ex. WHERE  column_1 IS NULL
+
+EXISTS   evaluates to true if subquery return something. Ex.  WHERE EXISTS(SELECT Age FROM People WHERE Work_Experience >20)         
+
+LIKE  search for a specified pattern. ex. WHERE column_2 LIKE ‘%b’
+
+IS DISTINCT FROM return  only distinct values without duplicates. ex. SELECT DISTINCT Birth_country FROM Applicants  
+
+7. From the cats table, what data is returned from these queries?
+SELECT name FROM cats WHERE gender = ‘F’;
+      | name     |
+	 | -------- |
+  	 | Seashell |
+	 | Nala     |
+
+SELECT name FROM cats WHERE age <> 3;
+	| name     |
+	| --------    |
+	| Mushi    |
+	| Seashell |
+	| Victoire |
+	| Nala       |
+
+SELECT ID FROM cats WHERE name != ‘Mushi’ AND gender = ‘M’;
+      | id  |
+		| --- |
+		| 3   |
+		| 4   |
